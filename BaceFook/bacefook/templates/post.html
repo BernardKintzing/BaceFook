@@ -19,11 +19,13 @@
       <h2 class="article-title">{{ post.title }}</h2>
     <p class="article-content">{{ post.content }}</p>
     <small class="text">Likes: {{ likes }}</small>
-    <form method="POST" action="">
-      {{ form.hidden_tag() }}
-      <div class="form-group">
-        {{ form.submit_like(class="btn btn-outline-success btn-sm") }}
-      </div>
+    {% if current_user.is_authenticated %}
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          {{ form.submit_like(class="btn btn-outline-success btn-sm") }}
+        </div>
+    {% endif %}
     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
       <div class="card-body">
         <h5 class="card-title">Comments:</h5>
